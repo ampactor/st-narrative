@@ -1,4 +1,6 @@
+mod config;
 mod error;
+mod http;
 mod types;
 
 fn main() {
