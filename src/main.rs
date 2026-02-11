@@ -1,3 +1,4 @@
+mod analysis;
 mod claude;
 mod config;
 mod error;
