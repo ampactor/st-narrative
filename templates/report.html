@@ -41,6 +41,17 @@
         </div>
     </header>
 
+    <!-- Refresh metadata bar -->
+    <div class="bg-gray-900/50 border-b border-gray-800 px-6 py-2">
+        <div class="max-w-6xl mx-auto flex items-center gap-4 text-xs text-gray-500">
+            <span>Last refreshed: <span class="text-gray-400">{{ generated_at }}</span></span>
+            <span class="text-gray-700">|</span>
+            <span>Next refresh: 1st &amp; 15th of each month</span>
+            <span class="text-gray-700">|</span>
+            <span>{{ total_signals }} signals across {{ source_count }} sources</span>
+        </div>
+    </div>
+
     <main class="max-w-6xl mx-auto px-6 py-8 space-y-12">
 
         <!-- Stats Strip -->
