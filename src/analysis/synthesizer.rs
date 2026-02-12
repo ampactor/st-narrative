@@ -1,5 +1,5 @@
-use crate::claude::ClaudeClient;
 use crate::error::Result;
+use crate::llm::LlmClient;
 use crate::types::{Metric, Narrative, TrendDirection};
 use serde::Deserialize;
 use tracing::info;
@@ -61,17 +61,14 @@ struct RawMetric {
     unit: String,
 }
 
-pub async fn identify_narratives(
-    claude: &ClaudeClient,
-    signals_json: &str,
-) -> Result<Vec<Narrative>> {
-    info!("sending signals to Claude for narrative identification");
+pub async fn identify_narratives(llm: &LlmClient, signals_json: &str) -> Result<Vec<Narrative>> {
+    info!("sending signals to LLM for narrative identification");
 
     let user_message = format!(
         "Analyze these aggregated signals from the Solana ecosystem and identify emerging narratives:\n\n{signals_json}"
     );
 
-    let response: SynthesisResponse = claude.complete_json(SYSTEM_PROMPT, &user_message).await?;
+    let response: SynthesisResponse = llm.complete_json(SYSTEM_PROMPT, &user_message).await?;
 
     let count = response.narratives.len();
     let narratives = response

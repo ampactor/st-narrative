@@ -26,7 +26,8 @@ cargo run -- signals -c config.toml
 
 ```bash
 GITHUB_TOKEN=          # GitHub API access
-ANTHROPIC_API_KEY=     # Claude API for narrative synthesis
+OPENROUTER_API_KEY=    # Default LLM provider for narrative synthesis
+ANTHROPIC_API_KEY=     # When using provider = "anthropic" in config.toml
 HELIUS_API_KEY=        # (optional) Helius RPC
 SOLANA_RPC_URL=        # Solana RPC endpoint (default: public mainnet)
 ```
@@ -46,8 +47,8 @@ CLI (clap) → Sources (parallel) → Aggregator → Claude Synthesis → HTML R
 
 ### Analysis
 - `analysis/aggregator.rs` — Group signals by category, compute source diversity
-- `analysis/synthesizer.rs` — Claude: signals → narrative identification
-- `analysis/ideas.rs` — Claude: narratives → build ideas
+- `analysis/synthesizer.rs` — LLM: signals → narrative identification
+- `analysis/ideas.rs` — LLM: narratives → build ideas
 
 ### Output
 - `output/report.rs` — Askama template rendering → static HTML
@@ -60,7 +61,7 @@ CLI (clap) → Sources (parallel) → Aggregator → Claude Synthesis → HTML R
 | `src/main.rs` | CLI entry, pipeline orchestration |
 | `src/config.rs` | TOML + env var config loading |
 | `src/http.rs` | HTTP client with retry/backoff |
-| `src/claude.rs` | Claude API client (JSON extraction) |
+| `src/llm.rs` | Provider-swappable LLM client (Anthropic/OpenRouter/OpenAI) |
 | `src/types.rs` | Signal, Narrative, BuildIdea types |
 | `config.toml` | Default configuration |
 | `templates/report.html` | HTML report template |
