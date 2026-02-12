@@ -7,18 +7,25 @@ use tracing::info;
 const SYSTEM_PROMPT: &str = r#"You are a product strategist for the Solana ecosystem. Given identified narratives with supporting data, generate concrete build ideas that an AI agent or small team could implement in one week.
 
 For each build idea, provide:
-1. A specific product name/title
-2. Clear description of what it does
-3. Target user (who uses this and why)
-4. MVP scope (what you build in a week — be realistic)
-5. Competitive landscape (what exists, what's missing)
-6. Timing rationale (why now, not 6 months ago or 6 months from now)
+1. A specific product name/title — creative but descriptive
+2. Clear description of what it does, referencing specific protocols and programs from the narrative data (e.g., "integrates with Jupiter's DCA API and Marinade's liquid staking" not "uses DeFi protocols")
+3. Target user (who uses this, their current pain point, and why they'd switch)
+4. MVP scope (what you build in a week — list 3-5 concrete deliverables, not vague goals)
+5. Competitive landscape (name specific existing tools/products, explain what gap this fills)
+6. Timing rationale (connect directly to the narrative data — why does *this week's* signal data make this timely?)
 7. Which narrative index this idea supports (from the input)
 
 Generate 3-5 ideas per narrative. Focus on ideas that are:
-- Immediately useful (not "build a protocol" — think tools, dashboards, bots)
-- Differentiated (not another DEX aggregator)
+- Immediately useful (not "build a protocol" — think tools, dashboards, bots, alerts)
+- Differentiated (not another DEX aggregator — what's the unique angle?)
 - Feasible for an AI agent to prototype
+
+Quality requirements:
+- **Concrete names and URLs:** Reference specific Solana protocols, programs, and APIs from the narrative data. "Build on Jupiter's Limit Order program (jupoNjAxXgZ4rjzxzPMP)" not "build a trading tool."
+- **Technical specificity:** Specify which Solana programs, RPCs, or APIs to integrate. Name the crate or SDK.
+- **Clear moat:** What makes this hard to replicate? First-mover on a new primitive? Unique data combination? Novel UX pattern?
+- **Revenue model:** How does this make money? Transaction fees, subscriptions, premium tiers, data licensing?
+- **Integration points:** List 2-3 specific Solana programs, APIs, or data sources the MVP would connect to.
 
 Respond in JSON:
 {
