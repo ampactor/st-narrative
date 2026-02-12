@@ -103,10 +103,11 @@ async fn run(
 
     // Collect signals from all sources in parallel
     info!("collecting signals from all sources...");
-    let (github_result, solana_result, social_result) = tokio::join!(
+    let (github_result, solana_result, social_result, defi_llama_result) = tokio::join!(
         sources::github::collect(&cfg.github, &http_client),
         sources::solana_rpc::collect(&cfg.solana, &http_client),
         sources::social::collect(&cfg.social, &http_client),
+        sources::defi_llama::collect(&cfg.defi_llama, &http_client),
     );
 
     let mut signals = Vec::new();
@@ -133,6 +134,14 @@ async fn run(
             signals.extend(s);
         }
         Err(e) => tracing::error!("Social collection failed: {e}"),
+    }
+
+    match defi_llama_result {
+        Ok(s) => {
+            info!(count = s.len(), "DeFiLlama TVL signals collected");
+            signals.extend(s);
+        }
+        Err(e) => tracing::error!("DeFiLlama collection failed: {e}"),
     }
 
     if signals.is_empty() {
@@ -187,10 +196,11 @@ async fn signals_only(config_path: PathBuf) -> Result<()> {
 
     let http_client = http::HttpClient::new("st-narrative/0.1.0 (solscout)")?;
 
-    let (github_result, solana_result, social_result) = tokio::join!(
+    let (github_result, solana_result, social_result, defi_llama_result) = tokio::join!(
         sources::github::collect(&cfg.github, &http_client),
         sources::solana_rpc::collect(&cfg.solana, &http_client),
         sources::social::collect(&cfg.social, &http_client),
+        sources::defi_llama::collect(&cfg.defi_llama, &http_client),
     );
 
     let mut signals = Vec::new();
@@ -201,6 +211,9 @@ async fn signals_only(config_path: PathBuf) -> Result<()> {
         signals.extend(s);
     }
     if let Ok(s) = social_result {
+        signals.extend(s);
+    }
+    if let Ok(s) = defi_llama_result {
         signals.extend(s);
     }
 
