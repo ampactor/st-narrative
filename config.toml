@@ -45,6 +45,21 @@ name = "Helius Blog"
 url = "https://www.helius.dev/blog"
 source_type = "blog"
 
+[[social.sources]]
+name = "Solana News"
+url = "https://solana.com/news"
+source_type = "blog"
+
+[[social.sources]]
+name = "Jito Blog"
+url = "https://www.jito.network/blog/"
+source_type = "blog"
+
+[[social.sources]]
+name = "Marinade Blog"
+url = "https://blog.marinade.finance/"
+source_type = "blog"
+
 [llm]
 # Provider: "openrouter" (default), "anthropic", or "openai" (any OpenAI-compatible)
 provider = "openrouter"
