@@ -146,7 +146,7 @@ fn default_source_type() -> String {
     "blog".into()
 }
 fn default_model() -> String {
-    "meta-llama/llama-3.1-8b-instruct:free".into()
+    "arcee-ai/trinity-large-preview:free".into()
 }
 fn default_max_tokens() -> u32 {
     4096
