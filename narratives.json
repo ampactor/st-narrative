@@ -1,0 +1,309 @@
+[
+  {
+    "title": "Jupiter Dominance as Solana's DeFi Routing Layer",
+    "summary": "Jupiter Aggregator v6 processes an estimated 211,765 tx/hr — roughly 8.5x the throughput of Raydium AMM (25,000 tx/hr) — cementing its position as the default routing layer for Solana DeFi. This matters because aggregator dominance concentrates liquidity discovery into a single protocol, creating a structural dependency where new DEXes must integrate Jupiter to reach users. Combined with 9 new DeFi GitHub repos (269 stars, 229 forks) including DEX parsers and arbitrage bots, the surrounding tooling ecosystem is building specifically around Jupiter's transaction flow.",
+    "confidence": 0.88,
+    "supporting_signals": [
+      4,
+      6,
+      11,
+      10
+    ],
+    "trend": "Accelerating",
+    "key_metrics": [
+      {
+        "name": "jupiter_tx_per_hour",
+        "value": 211765.0,
+        "unit": "tx/hr"
+      },
+      {
+        "name": "raydium_tx_per_hour",
+        "value": 25000.0,
+        "unit": "tx/hr"
+      },
+      {
+        "name": "jupiter_to_raydium_ratio",
+        "value": 8.47,
+        "unit": "x"
+      },
+      {
+        "name": "defi_new_repos",
+        "value": 9.0,
+        "unit": "repos"
+      },
+      {
+        "name": "defi_repo_stars",
+        "value": 269.0,
+        "unit": "stars"
+      },
+      {
+        "name": "defi_repo_forks",
+        "value": 229.0,
+        "unit": "forks"
+      }
+    ]
+  },
+  {
+    "title": "Anti-JIT and MEV Protection Tooling Surge",
+    "summary": "The imbue-bit/no_JIT repository (181 stars — the single most-starred new Solana DeFi repo this month) signals strong developer and user demand for MEV protection on Solana, specifically targeting JIT (Just-In-Time) sandwich attacks on AMMs. This represents a structural shift from passive acceptance of MEV extraction toward active countermeasures at the application layer. The high fork count in DeFi repos (229 forks across 9 repos) suggests downstream builders are actively adapting these tools, and the trend aligns with Jito's 380 tx/hr stake pool activity where MEV redistribution is already a core primitive.",
+    "confidence": 0.75,
+    "supporting_signals": [
+      4,
+      13
+    ],
+    "trend": "Emerging",
+    "key_metrics": [
+      {
+        "name": "no_jit_stars",
+        "value": 181.0,
+        "unit": "stars"
+      },
+      {
+        "name": "defi_total_forks",
+        "value": 229.0,
+        "unit": "forks"
+      },
+      {
+        "name": "jito_stake_pool_tx_per_hour",
+        "value": 380.0,
+        "unit": "tx/hr"
+      }
+    ]
+  },
+  {
+    "title": "Jito Consolidating Liquid Staking While Marinade Stagnates",
+    "summary": "Jito Stake Pool processes 380 tx/hr versus Marinade Finance's 9 tx/hr — a 40:1 activity ratio indicating a decisive shift in liquid staking market share. With $24.8B in total Solana liquid staking TVL (the second-largest DeFi category after CEX), this concentration matters: Jito's MEV-sharing model is winning over Marinade's traditional delegation approach. The second-order effect is that jitoSOL becomes the dominant LST collateral across Solana lending ($5.5B TVL) and DeFi composability layers, creating a flywheel where MEV yield attracts stakers whose LSTs deepen DeFi liquidity.",
+    "confidence": 0.92,
+    "supporting_signals": [
+      12,
+      13,
+      20
+    ],
+    "trend": "Accelerating",
+    "key_metrics": [
+      {
+        "name": "jito_tx_per_hour",
+        "value": 380.0,
+        "unit": "tx/hr"
+      },
+      {
+        "name": "marinade_tx_per_hour",
+        "value": 9.37,
+        "unit": "tx/hr"
+      },
+      {
+        "name": "jito_to_marinade_ratio",
+        "value": 40.6,
+        "unit": "x"
+      },
+      {
+        "name": "liquid_staking_tvl",
+        "value": 24788859553.6,
+        "unit": "USD"
+      },
+      {
+        "name": "lending_tvl",
+        "value": 5527735364.0,
+        "unit": "USD"
+      }
+    ]
+  },
+  {
+    "title": "Solana Spot ETF Momentum Driving Institutional Narrative",
+    "summary": "Helius Blog coverage of 16 U.S. Solana Spot ETFs (approvals, fees, tickers, S1 filings) represents a structural legitimization event for Solana as an institutional asset class. This is not just price speculation — it directly impacts the 91.5% circulating supply ratio (567.8M of 620.3M SOL) by creating new demand sinks for SOL tokens. The convergence of ETF filings with Solana's #2 chain TVL ranking ($6.37B) and the Solana Foundation Delegation Program coverage suggests coordinated institutional positioning across custody, staking yield, and regulated access products.",
+    "confidence": 0.80,
+    "supporting_signals": [
+      9,
+      16,
+      17,
+      18
+    ],
+    "trend": "Accelerating",
+    "key_metrics": [
+      {
+        "name": "etf_filings",
+        "value": 16.0,
+        "unit": "ETFs"
+      },
+      {
+        "name": "circulating_sol",
+        "value": 567838023.8,
+        "unit": "SOL"
+      },
+      {
+        "name": "circulating_pct",
+        "value": 91.5,
+        "unit": "%"
+      },
+      {
+        "name": "solana_tvl",
+        "value": 6.37,
+        "unit": "B USD"
+      },
+      {
+        "name": "solana_tvl_rank",
+        "value": 2.0,
+        "unit": "rank"
+      }
+    ]
+  },
+  {
+    "title": "AI Agent Infrastructure on Solana (SIGNIA and x402)",
+    "summary": "SIGNIA (207 stars) and x402-deploy (9 stars) represent early but high-signal AI-agent-on-chain development, with SIGNIA alone accounting for 93% of the AI & Agents category's stars. The star-to-fork ratio (222:21) suggests more spectators than builders, indicating this is still narrative-stage rather than production-stage. However, the trend intersects with multiple GitHub signals: AI trading bots appearing in trending repos, and DeFi tooling repos (CloddsBot at 50 stars) blurring the line between automated trading and agent frameworks. The structural question is whether Solana's high throughput (1,179 non-vote TPS) and low latency make it the execution layer for autonomous agents.",
+    "confidence": 0.65,
+    "supporting_signals": [
+      5,
+      6,
+      4,
+      7
+    ],
+    "trend": "Emerging",
+    "key_metrics": [
+      {
+        "name": "signia_stars",
+        "value": 207.0,
+        "unit": "stars"
+      },
+      {
+        "name": "ai_agent_repos",
+        "value": 3.0,
+        "unit": "repos"
+      },
+      {
+        "name": "ai_agent_total_stars",
+        "value": 222.0,
+        "unit": "stars"
+      },
+      {
+        "name": "ai_agent_forks",
+        "value": 21.0,
+        "unit": "forks"
+      },
+      {
+        "name": "star_to_fork_ratio",
+        "value": 10.6,
+        "unit": "x"
+      },
+      {
+        "name": "non_vote_tps",
+        "value": 1179.0,
+        "unit": "tx/s"
+      }
+    ]
+  },
+  {
+    "title": "Firedancer Validator Client Maturation and Network Diversification",
+    "summary": "Firedancer (1,396 stars) remains the most-starred active Solana repo this week, and Helius Blog's coverage of Agave 3.1 updates signals that both major validator clients are advancing simultaneously. This dual-client maturation is a structural resilience upgrade — Solana moves from single-client dependency toward the multi-client model that Ethereum adopted post-Merge. The combination of validator software development with network performance data (3,175 TPS total, epoch 925 at 27.2% progress, 487B cumulative transactions) suggests a chain operating at production scale while actively upgrading its consensus infrastructure.",
+    "confidence": 0.82,
+    "supporting_signals": [
+      6,
+      7,
+      8,
+      16
+    ],
+    "trend": "Stable",
+    "key_metrics": [
+      {
+        "name": "firedancer_stars",
+        "value": 1396.0,
+        "unit": "stars"
+      },
+      {
+        "name": "total_tps",
+        "value": 3175.0,
+        "unit": "tx/s"
+      },
+      {
+        "name": "non_vote_tps",
+        "value": 1179.0,
+        "unit": "tx/s"
+      },
+      {
+        "name": "current_epoch",
+        "value": 925.0,
+        "unit": ""
+      },
+      {
+        "name": "total_transactions",
+        "value": 487368306698.0,
+        "unit": "txs"
+      }
+    ]
+  },
+  {
+    "title": "Memecoin and Token Launch Tooling Proliferation",
+    "summary": "Multiple signals converge on memecoin infrastructure: fdv.lol (93 stars, 'BLAZING-FAST client-side SOL memecoin radar'), Meteora-DBC-Bagsapp-Bundler (43 stars for Meteora launch bundling), pumpdev.io (20 stars), and Metaplex Token Metadata processing 4,176 tx/hr. This is not just retail speculation — it represents an industrialization of token launch infrastructure on Solana, with dedicated tooling for bundling, scanning, and metadata management. The high Metaplex throughput relative to NFT marketplace activity (Tensor at only 28 tx/hr) suggests token metadata creation vastly outpaces secondary trading, consistent with a high-churn launch economy.",
+    "confidence": 0.85,
+    "supporting_signals": [
+      1,
+      6,
+      15,
+      14
+    ],
+    "trend": "Stable",
+    "key_metrics": [
+      {
+        "name": "metaplex_tx_per_hour",
+        "value": 4176.0,
+        "unit": "tx/hr"
+      },
+      {
+        "name": "tensor_tx_per_hour",
+        "value": 28.0,
+        "unit": "tx/hr"
+      },
+      {
+        "name": "metaplex_to_tensor_ratio",
+        "value": 149.1,
+        "unit": "x"
+      },
+      {
+        "name": "fdv_lol_stars",
+        "value": 93.0,
+        "unit": "stars"
+      },
+      {
+        "name": "meteora_bundler_stars",
+        "value": 43.0,
+        "unit": "stars"
+      }
+    ]
+  },
+  {
+    "title": "RWA Emergence as Third-Largest Non-CEX DeFi Category",
+    "summary": "Real World Assets hold $6.9B in TVL across 19 Solana protocols, making RWA the largest non-CEX, non-liquid-staking DeFi category — surpassing even lending ($5.5B across 24 protocols). This is structurally significant because RWA TVL represents external capital entering the Solana ecosystem rather than recycled crypto-native liquidity. However, there is a notable divergence: zero new GitHub repos in the RWA category this month despite the large TVL, suggesting existing protocols are capturing deposits without new builder entrants. This capital-without-code pattern may indicate either protocol maturity or moat consolidation.",
+    "confidence": 0.72,
+    "supporting_signals": [
+      20,
+      0
+    ],
+    "trend": "Stable",
+    "key_metrics": [
+      {
+        "name": "rwa_tvl",
+        "value": 6926098219.84,
+        "unit": "USD"
+      },
+      {
+        "name": "rwa_protocol_count",
+        "value": 19.0,
+        "unit": "protocols"
+      },
+      {
+        "name": "lending_tvl",
+        "value": 5527735364.0,
+        "unit": "USD"
+      },
+      {
+        "name": "lending_protocol_count",
+        "value": 24.0,
+        "unit": "protocols"
+      },
+      {
+        "name": "rwa_new_repos",
+        "value": 0.0,
+        "unit": "repos"
+      }
+    ]
+  }
+]

@@ -1,0 +1,492 @@
+[
+  {
+    "source": "GitHub",
+    "category": "New solana Repositories",
+    "title": "31 new repos with topic 'solana' in last 30 days",
+    "description": "GitHub search found 31 repositories created since 2026-01-13 with topic 'solana' and 3+ stars.",
+    "metrics": [
+      {
+        "name": "total_new_repos",
+        "value": 31.0,
+        "unit": "repos"
+      }
+    ],
+    "url": "https://github.com/topics/solana?o=desc&s=stars",
+    "timestamp": "2026-02-12T07:29:49.742474410Z"
+  },
+  {
+    "source": "GitHub",
+    "category": "General Solana",
+    "title": "General Solana: 15 new repos, 167 total stars",
+    "description": "Top repos: LaChance-Lab/Meteora-DBC-Bagsapp-Bundler (43*), 0xChris-Defi/LuckyScan (23*), pumpdev3/pumpdev.io (20*), nirholas/boosty (13*), ewindmer/solana-borsh-example (10*)",
+    "metrics": [
+      {
+        "name": "repo_count",
+        "value": 15.0,
+        "unit": "repos"
+      },
+      {
+        "name": "total_stars",
+        "value": 167.0,
+        "unit": "stars"
+      },
+      {
+        "name": "total_forks",
+        "value": 80.0,
+        "unit": "forks"
+      }
+    ],
+    "url": null,
+    "timestamp": "2026-02-12T07:29:49.743759335Z"
+  },
+  {
+    "source": "GitHub",
+    "category": "Privacy",
+    "title": "Privacy: 2 new repos, 7 total stars",
+    "description": "Top repos: iamvon/shielded-pool-pinocchio-solana (4*), MatthewSullivn/LeakLens (3*)",
+    "metrics": [
+      {
+        "name": "repo_count",
+        "value": 2.0,
+        "unit": "repos"
+      },
+      {
+        "name": "total_stars",
+        "value": 7.0,
+        "unit": "stars"
+      },
+      {
+        "name": "total_forks",
+        "value": 2.0,
+        "unit": "forks"
+      }
+    ],
+    "url": null,
+    "timestamp": "2026-02-12T07:29:49.743767212Z"
+  },
+  {
+    "source": "GitHub",
+    "category": "Infrastructure",
+    "title": "Infrastructure: 1 new repos, 12 total stars",
+    "description": "Top repos: nirholas/solana-wallet-toolkit (12*)",
+    "metrics": [
+      {
+        "name": "repo_count",
+        "value": 1.0,
+        "unit": "repos"
+      },
+      {
+        "name": "total_stars",
+        "value": 12.0,
+        "unit": "stars"
+      },
+      {
+        "name": "total_forks",
+        "value": 0.0,
+        "unit": "forks"
+      }
+    ],
+    "url": null,
+    "timestamp": "2026-02-12T07:29:49.743770610Z"
+  },
+  {
+    "source": "GitHub",
+    "category": "DeFi",
+    "title": "DeFi: 9 new repos, 269 total stars",
+    "description": "Top repos: imbue-bit/no_JIT (181*), alsk1992/CloddsBot (50*), DefaultPerson/solana-dex-parser-go (10*), XSpoonAi/spoon-awesome-skill (9*), ObeyArb/Solana-Arbitrage-Trading-Bot (5*)",
+    "metrics": [
+      {
+        "name": "repo_count",
+        "value": 9.0,
+        "unit": "repos"
+      },
+      {
+        "name": "total_stars",
+        "value": 269.0,
+        "unit": "stars"
+      },
+      {
+        "name": "total_forks",
+        "value": 229.0,
+        "unit": "forks"
+      }
+    ],
+    "url": null,
+    "timestamp": "2026-02-12T07:29:49.743776679Z"
+  },
+  {
+    "source": "GitHub",
+    "category": "AI & Agents",
+    "title": "AI & Agents: 3 new repos, 222 total stars",
+    "description": "Top repos: SIGNIAINDEX/SIGNIA (207*), nirholas/x402-deploy (9*), snowbeardo/Blockchain-Full-Stack-Projects (6*)",
+    "metrics": [
+      {
+        "name": "repo_count",
+        "value": 3.0,
+        "unit": "repos"
+      },
+      {
+        "name": "total_stars",
+        "value": 222.0,
+        "unit": "stars"
+      },
+      {
+        "name": "total_forks",
+        "value": 21.0,
+        "unit": "forks"
+      }
+    ],
+    "url": null,
+    "timestamp": "2026-02-12T07:29:49.743782088Z"
+  },
+  {
+    "source": "GitHub",
+    "category": "Trending Solana Repos",
+    "title": "Top 10 most active Solana repos this week",
+    "description": "Suraj0099/SOLANA-AML-Checker (1*) - 🔍 Screen Solana wallets and NFTs for suspicious activity with this free AML checker tool, ensuring safer transactions on the blockchain.\nZeagalf/apollotoday (1*) - 🌟 Build smart on-chain solutions with Rust, focusing on DeFi protocols and AI agents for enhanced trading and innovative contract engineering.\ngil444lf/presence-ai (2*) - 🤖 Experience emotional presence with chi.bi, an AI companion designed for awareness, not performance, providing a calm and supportive environment.\nhalilege123/Pumpfun-Smart-Contract (2*) - 🚀 Build and launch memecoins effortlessly with the Pumpfun smart contract, featuring liquidity management and advanced token functionalities.\ndfinity/oisy-wallet (161*) - A browser-based, multi-chain wallet hosted on the Internet Computer\nnguyenkhuonghung/moonshot-bundler-bot (1*) - 🚀 Build and send high-speed bundled transactions on Solana with the Moonshot Bundler Bot for ultra-fast token launches and micro-cap trading.\nfiredancer-io/firedancer (1396*) - Firedancer is Jump Crypto's Solana validator software.\nrhaylee250/blockchain-ai-agent-project (1*) - 🎨 Generate AI-driven art from Twitter content, securely store it on the Solana blockchain, and showcase it on a dedicated platform for creators.\nMouad2805/SmartAI-Trading-Bot (0*) - 🤖 Automate trading with SmartAI-Trading-Bot for Ethereum, leveraging AI for profitable strategies and real-time market insights.\nKvexx/web3-ai-trading-agent (2*) - 🤖 Build an autonomous Web3 AI trading agent for ETH-USDC on the BASE blockchain with Uniswap V4; learn by modifying and enhancing this hands-on project.",
+    "metrics": [
+      {
+        "name": "trending_count",
+        "value": 10.0,
+        "unit": "repos"
+      }
+    ],
+    "url": "https://github.com/topics/solana?o=desc&s=updated",
+    "timestamp": "2026-02-12T07:29:50.360678475Z"
+  },
+  {
+    "source": "SolanaOnchain",
+    "category": "Network Performance",
+    "title": "Solana TPS: 3175 total, 1179 non-vote",
+    "description": "Average over 10 recent samples. Non-vote TPS indicates real user activity vs consensus overhead.",
+    "metrics": [
+      {
+        "name": "avg_tps",
+        "value": 3174.9266666666663,
+        "unit": "tx/s"
+      },
+      {
+        "name": "avg_non_vote_tps",
+        "value": 1179.0683333333334,
+        "unit": "tx/s"
+      }
+    ],
+    "url": "https://explorer.solana.com/",
+    "timestamp": "2026-02-12T07:29:48.267832394Z"
+  },
+  {
+    "source": "SolanaOnchain",
+    "category": "Network State",
+    "title": "Epoch 925 — 27.2% complete",
+    "description": "Slot 117495/432000, absolute slot 399717495. Total transactions: 487368306698",
+    "metrics": [
+      {
+        "name": "epoch",
+        "value": 925.0,
+        "unit": ""
+      },
+      {
+        "name": "epoch_progress",
+        "value": 27.197916666666664,
+        "unit": "%"
+      },
+      {
+        "name": "absolute_slot",
+        "value": 399717495.0,
+        "unit": "slot"
+      }
+    ],
+    "url": "https://explorer.solana.com/",
+    "timestamp": "2026-02-12T07:29:48.337508826Z"
+  },
+  {
+    "source": "SolanaOnchain",
+    "category": "Token Economics",
+    "title": "SOL Supply: 567.8M circulating (91.5%)",
+    "description": "Total: 620.3M SOL, Circulating: 567.8M SOL, Non-circulating: 52.4M SOL",
+    "metrics": [
+      {
+        "name": "circulating_sol",
+        "value": 567838023.8051598,
+        "unit": "SOL"
+      },
+      {
+        "name": "circulating_pct",
+        "value": 91.54875810425317,
+        "unit": "%"
+      }
+    ],
+    "url": null,
+    "timestamp": "2026-02-12T07:29:53.394807893Z"
+  },
+  {
+    "source": "SolanaOnchain",
+    "category": "DeFi",
+    "title": "Raydium AMM: 25000 tx/hr (1000 txs over 2m)",
+    "description": "Program Raydium AMM (675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8) — 1000 transactions sampled. Rate: 25000 tx/hr over 2 minutes.",
+    "metrics": [
+      {
+        "name": "recent_tx_count",
+        "value": 1000.0,
+        "unit": "txs"
+      },
+      {
+        "name": "tx_per_hour",
+        "value": 25000.0,
+        "unit": "tx/hr"
+      },
+      {
+        "name": "sample_period",
+        "value": 2.4,
+        "unit": "minutes"
+      }
+    ],
+    "url": "https://explorer.solana.com/address/675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+    "timestamp": "2026-02-12T07:29:54.316807707Z"
+  },
+  {
+    "source": "SolanaOnchain",
+    "category": "DeFi",
+    "title": "Jupiter Aggregator v6: 211765 tx/hr (1000 txs over 0m)",
+    "description": "Program Jupiter Aggregator v6 (JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4) — 1000 transactions sampled. Rate: 211765 tx/hr over 0 minutes.",
+    "metrics": [
+      {
+        "name": "recent_tx_count",
+        "value": 1000.0,
+        "unit": "txs"
+      },
+      {
+        "name": "tx_per_hour",
+        "value": 211764.70588235295,
+        "unit": "tx/hr"
+      },
+      {
+        "name": "sample_period",
+        "value": 0.2833333333333333,
+        "unit": "minutes"
+      }
+    ],
+    "url": "https://explorer.solana.com/address/JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
+    "timestamp": "2026-02-12T07:29:55.208418827Z"
+  },
+  {
+    "source": "SolanaOnchain",
+    "category": "Liquid Staking",
+    "title": "Marinade Finance: 9 tx/hr (1000 txs over 106.8h)",
+    "description": "Program Marinade Finance (MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD) — 1000 transactions sampled. Rate: 9 tx/hr over 106.8 hours.",
+    "metrics": [
+      {
+        "name": "recent_tx_count",
+        "value": 1000.0,
+        "unit": "txs"
+      },
+      {
+        "name": "tx_per_hour",
+        "value": 9.365439447230951,
+        "unit": "tx/hr"
+      },
+      {
+        "name": "sample_period",
+        "value": 106.77555555555556,
+        "unit": "hours"
+      }
+    ],
+    "url": "https://explorer.solana.com/address/MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD",
+    "timestamp": "2026-02-12T07:29:56.252898568Z"
+  },
+  {
+    "source": "SolanaOnchain",
+    "category": "Liquid Staking",
+    "title": "Jito Stake Pool: 380 tx/hr (1000 txs over 2.6h)",
+    "description": "Program Jito Stake Pool (Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb) — 1000 transactions sampled. Rate: 380 tx/hr over 2.6 hours.",
+    "metrics": [
+      {
+        "name": "recent_tx_count",
+        "value": 1000.0,
+        "unit": "txs"
+      },
+      {
+        "name": "tx_per_hour",
+        "value": 379.6267004112622,
+        "unit": "tx/hr"
+      },
+      {
+        "name": "sample_period",
+        "value": 2.6341666666666668,
+        "unit": "hours"
+      }
+    ],
+    "url": "https://explorer.solana.com/address/Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb",
+    "timestamp": "2026-02-12T07:29:57.576347315Z"
+  },
+  {
+    "source": "SolanaOnchain",
+    "category": "NFT",
+    "title": "Tensor: 28 tx/hr (1000 txs over 36.3h)",
+    "description": "Program Tensor (TSWAPaqyCSx2KABk68Shruf4rp7CxcNi8hAsbdwmHbN) — 1000 transactions sampled. Rate: 28 tx/hr over 36.3 hours.",
+    "metrics": [
+      {
+        "name": "recent_tx_count",
+        "value": 1000.0,
+        "unit": "txs"
+      },
+      {
+        "name": "tx_per_hour",
+        "value": 27.539779681762546,
+        "unit": "tx/hr"
+      },
+      {
+        "name": "sample_period",
+        "value": 36.31111111111111,
+        "unit": "hours"
+      }
+    ],
+    "url": "https://explorer.solana.com/address/TSWAPaqyCSx2KABk68Shruf4rp7CxcNi8hAsbdwmHbN",
+    "timestamp": "2026-02-12T07:29:58.867097527Z"
+  },
+  {
+    "source": "SolanaOnchain",
+    "category": "NFT",
+    "title": "Metaplex Token Metadata: 4176 tx/hr (1000 txs over 14m)",
+    "description": "Program Metaplex Token Metadata (metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s) — 1000 transactions sampled. Rate: 4176 tx/hr over 14 minutes.",
+    "metrics": [
+      {
+        "name": "recent_tx_count",
+        "value": 1000.0,
+        "unit": "txs"
+      },
+      {
+        "name": "tx_per_hour",
+        "value": 4176.334106728538,
+        "unit": "tx/hr"
+      },
+      {
+        "name": "sample_period",
+        "value": 14.366666666666665,
+        "unit": "minutes"
+      }
+    ],
+    "url": "https://explorer.solana.com/address/metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s",
+    "timestamp": "2026-02-12T07:30:00.028810882Z"
+  },
+  {
+    "source": "Social",
+    "category": "Blog: Helius Blog",
+    "title": "Helius Blog: 9 recent articles (6 Solana-related)",
+    "description": "Recent topics: 16 U.S. Solana Spot ETFs: Approvals, Fees, Tickers, S1s; Agave 3.1 Update: All You Need to Know; Introducing Orb: Solana's New Block Explorer; Introducing Token Account Filters for gTFA; The Helius Manifesto; Top 13 Solana Block Explorers (2026); What Would Solana Need to Change to Become Quantum Ready?; What is the Solana Virtual Machine (SVM)?; getTransactionsForAddress and up to 10x Faster Archival Data",
+    "metrics": [
+      {
+        "name": "total_articles",
+        "value": 9.0,
+        "unit": "articles"
+      },
+      {
+        "name": "solana_relevant",
+        "value": 6.0,
+        "unit": "articles"
+      }
+    ],
+    "url": "https://www.helius.dev/blog",
+    "timestamp": "2026-02-12T07:29:48.886347041Z"
+  },
+  {
+    "source": "Social",
+    "category": "Blog: Solana News",
+    "title": "Solana News: 1 recent articles (1 Solana-related)",
+    "description": "Recent topics: The Solana Foundation Delegation Program",
+    "metrics": [
+      {
+        "name": "total_articles",
+        "value": 1.0,
+        "unit": "articles"
+      },
+      {
+        "name": "solana_relevant",
+        "value": 1.0,
+        "unit": "articles"
+      }
+    ],
+    "url": "https://solana.com/news",
+    "timestamp": "2026-02-12T07:29:49.394814082Z"
+  },
+  {
+    "source": "SolanaOnchain",
+    "category": "DeFi TVL",
+    "title": "Solana Chain TVL: $6.37B (#2 overall)",
+    "description": "Total value locked across all Solana DeFi protocols. Ranked #2 among all chains by TVL.",
+    "metrics": [
+      {
+        "name": "solana_tvl",
+        "value": 6370469302.18331,
+        "unit": "USD"
+      },
+      {
+        "name": "solana_tvl_billions",
+        "value": 6.370469302183309,
+        "unit": "B USD"
+      }
+    ],
+    "url": "https://defillama.com/chain/Solana",
+    "timestamp": "2026-02-12T07:29:48.194075097Z"
+  },
+  {
+    "source": "SolanaOnchain",
+    "category": "DeFi TVL",
+    "title": "Top 10 Solana DeFi Protocols by TVL (319 total Solana protocols tracked)",
+    "description": "Leading protocols: Binance CEX: $132266M, Lido: $18856M, OKX: $17910M, Bitfinex: $17415M, Bybit: $15194M, Bitget: $6114M, HTX: $5426M, Gate: $4650M, MEXC: $4430M, Deribit: $3927M",
+    "metrics": [
+      {
+        "name": "solana_protocol_count",
+        "value": 319.0,
+        "unit": "protocols"
+      },
+      {
+        "name": "total_solana_defi_tvl",
+        "value": 269326020751.29825,
+        "unit": "USD"
+      },
+      {
+        "name": "top_protocol_tvl",
+        "value": 132266074155.99731,
+        "unit": "USD"
+      }
+    ],
+    "url": "https://defillama.com/chain/Solana",
+    "timestamp": "2026-02-12T07:29:48.796632166Z"
+  },
+  {
+    "source": "SolanaOnchain",
+    "category": "DeFi TVL",
+    "title": "Solana DeFi Category Breakdown (43 categories)",
+    "description": "Top categories: CEX: $219526M (47 protocols), Liquid Staking: $24789M (36 protocols), RWA: $6926M (19 protocols), Lending: $5528M (24 protocols), Bridge: $3173M (14 protocols)",
+    "metrics": [
+      {
+        "name": "tvl_cex",
+        "value": 219525832689.49704,
+        "unit": "USD"
+      },
+      {
+        "name": "tvl_liquid_staking",
+        "value": 24788859553.5992,
+        "unit": "USD"
+      },
+      {
+        "name": "tvl_rwa",
+        "value": 6926098219.839454,
+        "unit": "USD"
+      },
+      {
+        "name": "tvl_lending",
+        "value": 5527735363.952727,
+        "unit": "USD"
+      },
+      {
+        "name": "tvl_bridge",
+        "value": 3173038084.656634,
+        "unit": "USD"
+      }
+    ],
+    "url": "https://defillama.com/chain/Solana",
+    "timestamp": "2026-02-12T07:29:48.796988587Z"
+  }
+]
