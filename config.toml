@@ -51,14 +51,18 @@ url = "https://solana.com/news"
 source_type = "blog"
 
 [[social.sources]]
-name = "Jito Blog"
-url = "https://www.jito.network/blog/"
+name = "Phantom Learn"
+url = "https://phantom.com/learn"
 source_type = "blog"
 
 [[social.sources]]
-name = "Marinade Blog"
-url = "https://blog.marinade.finance/"
+name = "Solana Developers"
+url = "https://solana.com/developers"
 source_type = "blog"
+
+[defi_llama]
+enabled = true
+top_protocols = 10
 
 [llm]
 # Provider: "openrouter" (default), "anthropic", or "openai" (any OpenAI-compatible)

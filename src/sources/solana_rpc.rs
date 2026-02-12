@@ -211,10 +211,18 @@ pub async fn collect(config: &SolanaConfig, http: &HttpClient) -> Result<Vec<Sig
                     program.address,
                     activity.tx_count,
                     if activity.tx_per_hour > 0.0 {
-                        format!(
-                            "Rate: {:.0} tx/hr over {:.1} hours.",
-                            activity.tx_per_hour, activity.time_span_hours
-                        )
+                        if activity.time_span_hours < 1.0 {
+                            format!(
+                                "Rate: {:.0} tx/hr over {:.0} minutes.",
+                                activity.tx_per_hour,
+                                activity.time_span_hours * 60.0
+                            )
+                        } else {
+                            format!(
+                                "Rate: {:.0} tx/hr over {:.1} hours.",
+                                activity.tx_per_hour, activity.time_span_hours
+                            )
+                        }
                     } else {
                         "Insufficient data for rate calculation.".into()
                     }
@@ -230,11 +238,19 @@ pub async fn collect(config: &SolanaConfig, http: &HttpClient) -> Result<Vec<Sig
                         value: activity.tx_per_hour,
                         unit: "tx/hr".into(),
                     });
-                    metrics.push(Metric {
-                        name: "sample_hours".into(),
-                        value: activity.time_span_hours,
-                        unit: "hours".into(),
-                    });
+                    if activity.time_span_hours < 1.0 {
+                        metrics.push(Metric {
+                            name: "sample_period".into(),
+                            value: activity.time_span_hours * 60.0,
+                            unit: "minutes".into(),
+                        });
+                    } else {
+                        metrics.push(Metric {
+                            name: "sample_period".into(),
+                            value: activity.time_span_hours,
+                            unit: "hours".into(),
+                        });
+                    }
                 }
                 signals.push(Signal {
                     source: SignalSource::SolanaOnchain,
