@@ -48,7 +48,7 @@ source_type = "blog"
 [llm]
 # Provider: "openrouter" (default), "anthropic", or "openai" (any OpenAI-compatible)
 provider = "openrouter"
-model = "meta-llama/llama-3.1-8b-instruct:free"
+model = "arcee-ai/trinity-large-preview:free"
 # api_key_env = "OPENROUTER_API_KEY"  # default per provider
 max_tokens = 4096
 

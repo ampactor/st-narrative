@@ -15,7 +15,7 @@ pub struct HttpClient {
 impl HttpClient {
     pub fn new(user_agent: &str) -> Result<Self> {
         let client = Client::builder()
-            .timeout(Duration::from_secs(30))
+            .timeout(Duration::from_secs(180))
             .user_agent(user_agent)
             .build()
             .map_err(|e| Error::http(e.to_string()))?;
