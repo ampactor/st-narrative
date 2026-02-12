@@ -33,6 +33,14 @@ enum Command {
         /// Output path for the HTML report
         #[arg(short, long)]
         output: Option<PathBuf>,
+
+        /// LLM provider override: anthropic, openrouter, openai
+        #[arg(long)]
+        provider: Option<String>,
+
+        /// LLM model override
+        #[arg(long)]
+        model: Option<String>,
     },
 
     /// Collect signals only (no Claude analysis), output as JSON
@@ -58,15 +66,37 @@ async fn main() -> Result<()> {
     let cli = Cli::parse();
 
     match cli.command {
-        Command::Run { config, output } => run(config, output).await,
+        Command::Run {
+            config,
+            output,
+            provider,
+            model,
+        } => run(config, output, provider, model).await,
         Command::Signals { config } => signals_only(config).await,
     }
 }
 
-async fn run(config_path: PathBuf, output_override: Option<PathBuf>) -> Result<()> {
-    let cfg = config::Config::load(&config_path)
+async fn run(
+    config_path: PathBuf,
+    output_override: Option<PathBuf>,
+    provider_override: Option<String>,
+    model_override: Option<String>,
+) -> Result<()> {
+    let mut cfg = config::Config::load(&config_path)
         .context(format!("loading config from {}", config_path.display()))?;
     cfg.validate()?;
+
+    // Apply CLI overrides
+    if let Some(p) = provider_override {
+        cfg.llm.provider = match p.as_str() {
+            "anthropic" => llm::Provider::Anthropic,
+            "openai" => llm::Provider::OpenAi,
+            _ => llm::Provider::OpenRouter,
+        };
+    }
+    if let Some(m) = model_override {
+        cfg.llm.model = m;
+    }
 
     let output_path = output_override.unwrap_or_else(|| PathBuf::from(&cfg.output.path));
     let http_client = http::HttpClient::new("st-narrative/0.1.0 (solscout)")?;
