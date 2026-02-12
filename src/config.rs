@@ -8,7 +8,7 @@ pub struct Config {
     pub solana: SolanaConfig,
     #[serde(default)]
     pub social: SocialConfig,
-    pub claude: ClaudeConfig,
+    pub llm: LlmConfig,
     #[serde(default)]
     pub output: OutputConfig,
 }
@@ -66,13 +66,17 @@ pub struct SocialSource {
 }
 
 #[derive(Debug, Deserialize)]
-pub struct ClaudeConfig {
-    #[serde(default = "default_api_key")]
-    pub api_key: String,
+pub struct LlmConfig {
+    #[serde(default)]
+    pub provider: crate::llm::Provider,
     #[serde(default = "default_model")]
     pub model: String,
     #[serde(default = "default_max_tokens")]
     pub max_tokens: u32,
+    /// Name of the env var holding the API key (default per provider).
+    pub api_key_env: Option<String>,
+    /// Base URL override (default per provider).
+    pub base_url: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -141,11 +145,8 @@ fn default_sources() -> Vec<SocialSource> {
 fn default_source_type() -> String {
     "blog".into()
 }
-fn default_api_key() -> String {
-    std::env::var("ANTHROPIC_API_KEY").unwrap_or_default()
-}
 fn default_model() -> String {
-    "claude-sonnet-4-5-20250929".into()
+    "meta-llama/llama-3.1-8b-instruct:free".into()
 }
 fn default_max_tokens() -> u32 {
     4096
@@ -170,11 +171,7 @@ impl Config {
                 "GITHUB_TOKEN not set. Export it or set github.token in config.toml",
             ));
         }
-        if self.claude.api_key.is_empty() {
-            return Err(Error::config(
-                "ANTHROPIC_API_KEY not set. Export it or set claude.api_key in config.toml",
-            ));
-        }
+        // LLM API key is validated at call time — not all providers require one
         Ok(())
     }
 }

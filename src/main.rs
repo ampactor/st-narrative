@@ -1,8 +1,8 @@
 mod analysis;
-mod claude;
 mod config;
 mod error;
 mod http;
+mod llm;
 mod output;
 mod sources;
 mod types;
@@ -119,19 +119,20 @@ async fn run(config_path: PathBuf, output_override: Option<PathBuf>) -> Result<(
 
     info!(groups = groups.len(), "signal groups formed");
 
-    // Claude analysis: identify narratives
-    let claude_client = claude::ClaudeClient::new(
-        cfg.claude.api_key.clone(),
-        cfg.claude.model.clone(),
-        cfg.claude.max_tokens,
+    // LLM analysis: identify narratives
+    let llm_client = llm::LlmClient::from_config(
+        cfg.llm.provider.clone(),
+        cfg.llm.model.clone(),
+        cfg.llm.max_tokens,
+        cfg.llm.api_key_env.clone(),
+        cfg.llm.base_url.clone(),
     )?;
 
-    let narratives =
-        analysis::synthesizer::identify_narratives(&claude_client, &signals_json).await?;
+    let narratives = analysis::synthesizer::identify_narratives(&llm_client, &signals_json).await?;
     info!(count = narratives.len(), "narratives identified");
 
-    // Claude analysis: generate build ideas
-    let build_ideas = analysis::ideas::generate_ideas(&claude_client, &narratives).await?;
+    // LLM analysis: generate build ideas
+    let build_ideas = analysis::ideas::generate_ideas(&llm_client, &narratives).await?;
     info!(count = build_ideas.len(), "build ideas generated");
 
     // Render HTML report

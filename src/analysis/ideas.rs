@@ -1,5 +1,5 @@
-use crate::claude::ClaudeClient;
 use crate::error::Result;
+use crate::llm::LlmClient;
 use crate::types::{BuildIdea, Narrative};
 use serde::Deserialize;
 use tracing::info;
@@ -51,10 +51,7 @@ struct RawIdea {
     narrative_index: usize,
 }
 
-pub async fn generate_ideas(
-    claude: &ClaudeClient,
-    narratives: &[Narrative],
-) -> Result<Vec<BuildIdea>> {
+pub async fn generate_ideas(llm: &LlmClient, narratives: &[Narrative]) -> Result<Vec<BuildIdea>> {
     info!(narrative_count = narratives.len(), "generating build ideas");
 
     let narratives_json = serde_json::to_string_pretty(narratives).unwrap_or_else(|_| "[]".into());
@@ -62,7 +59,7 @@ pub async fn generate_ideas(
     let user_message =
         format!("Generate build ideas for these Solana ecosystem narratives:\n\n{narratives_json}");
 
-    let response: IdeasResponse = claude.complete_json(SYSTEM_PROMPT, &user_message).await?;
+    let response: IdeasResponse = llm.complete_json(SYSTEM_PROMPT, &user_message).await?;
 
     let count = response.ideas.len();
     let ideas = response

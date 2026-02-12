@@ -45,10 +45,17 @@ name = "Helius Blog"
 url = "https://www.helius.dev/blog"
 source_type = "blog"
 
-[claude]
-# api_key comes from ANTHROPIC_API_KEY env var
-model = "claude-sonnet-4-5-20250929"
+[llm]
+# Provider: "openrouter" (default), "anthropic", or "openai" (any OpenAI-compatible)
+provider = "openrouter"
+model = "meta-llama/llama-3.1-8b-instruct:free"
+# api_key_env = "OPENROUTER_API_KEY"  # default per provider
 max_tokens = 4096
+
+# For premium runs (submission quality):
+# provider = "anthropic"
+# model = "claude-sonnet-4-5-20250929"
+# api_key_env = "ANTHROPIC_API_KEY"
 
 [output]
 path = "report.html"
