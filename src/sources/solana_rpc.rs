@@ -185,23 +185,61 @@ pub async fn collect(config: &SolanaConfig, http: &HttpClient) -> Result<Vec<Sig
         timestamp: Utc::now(),
     });
 
-    // Get signature counts for tracked programs
+    // Get signature counts for tracked programs (paginated for real counts)
     for program in &config.tracked_programs {
         match get_program_activity(&config.rpc_url, http, &program.address).await {
-            Ok(sig_count) => {
+            Ok(activity) => {
+                let title = if activity.tx_per_hour > 0.0 {
+                    format!(
+                        "{}: {:.0} tx/hr ({} txs over {:.1}h)",
+                        program.name,
+                        activity.tx_per_hour,
+                        activity.tx_count,
+                        activity.time_span_hours
+                    )
+                } else {
+                    format!(
+                        "{}: {} recent transactions",
+                        program.name, activity.tx_count
+                    )
+                };
+                let description = format!(
+                    "Program {} ({}) — {} transactions sampled. {}",
+                    program.name,
+                    program.address,
+                    activity.tx_count,
+                    if activity.tx_per_hour > 0.0 {
+                        format!(
+                            "Rate: {:.0} tx/hr over {:.1} hours.",
+                            activity.tx_per_hour, activity.time_span_hours
+                        )
+                    } else {
+                        "Insufficient data for rate calculation.".into()
+                    }
+                );
+                let mut metrics = vec![Metric {
+                    name: "recent_tx_count".into(),
+                    value: activity.tx_count as f64,
+                    unit: "txs".into(),
+                }];
+                if activity.tx_per_hour > 0.0 {
+                    metrics.push(Metric {
+                        name: "tx_per_hour".into(),
+                        value: activity.tx_per_hour,
+                        unit: "tx/hr".into(),
+                    });
+                    metrics.push(Metric {
+                        name: "sample_hours".into(),
+                        value: activity.time_span_hours,
+                        unit: "hours".into(),
+                    });
+                }
                 signals.push(Signal {
                     source: SignalSource::SolanaOnchain,
                     category: program.category.clone(),
-                    title: format!("{}: {} recent transactions", program.name, sig_count),
-                    description: format!(
-                        "Program {} ({}) had {sig_count} transactions in recent history.",
-                        program.name, program.address
-                    ),
-                    metrics: vec![Metric {
-                        name: "recent_tx_count".into(),
-                        value: sig_count as f64,
-                        unit: "txs".into(),
-                    }],
+                    title,
+                    description,
+                    metrics,
                     url: Some(format!(
                         "https://explorer.solana.com/address/{}",
                         program.address
@@ -222,22 +260,67 @@ pub async fn collect(config: &SolanaConfig, http: &HttpClient) -> Result<Vec<Sig
     Ok(signals)
 }
 
-async fn get_program_activity(rpc_url: &str, http: &HttpClient, address: &str) -> Result<usize> {
+struct ProgramActivity {
+    tx_count: usize,
+    tx_per_hour: f64,
+    time_span_hours: f64,
+}
+
+async fn get_program_activity(
+    rpc_url: &str,
+    http: &HttpClient,
+    address: &str,
+) -> Result<ProgramActivity> {
     #[derive(Deserialize)]
     struct SigInfo {
-        #[allow(dead_code)]
         signature: String,
+        #[serde(rename = "blockTime")]
+        block_time: Option<i64>,
     }
 
-    let sigs: Vec<SigInfo> = rpc_call(
-        rpc_url,
-        http,
-        "getSignaturesForAddress",
-        serde_json::json!([address, {"limit": 100}]),
-    )
-    .await?;
+    let mut all_sigs = Vec::new();
+    let mut before: Option<String> = None;
 
-    Ok(sigs.len())
+    // Paginate: up to 10 pages (1000 sigs max) using `before` cursor
+    for _ in 0..10 {
+        let params = if let Some(ref cursor) = before {
+            serde_json::json!([address, {"limit": 100, "before": cursor}])
+        } else {
+            serde_json::json!([address, {"limit": 100}])
+        };
+
+        let sigs: Vec<SigInfo> = rpc_call(rpc_url, http, "getSignaturesForAddress", params).await?;
+
+        let batch_len = sigs.len();
+        if let Some(last) = sigs.last() {
+            before = Some(last.signature.clone());
+        }
+        all_sigs.extend(sigs);
+
+        if batch_len < 100 {
+            break;
+        }
+    }
+
+    let tx_count = all_sigs.len();
+
+    // Compute rate from block timestamps (results ordered newest-first)
+    let timestamps: Vec<i64> = all_sigs.iter().filter_map(|s| s.block_time).collect();
+    let (tx_per_hour, time_span_hours) = if timestamps.len() >= 2 {
+        let newest = timestamps[0];
+        let oldest = timestamps[timestamps.len() - 1];
+        let span_secs = (newest - oldest).max(1) as f64;
+        let span_hours = span_secs / 3600.0;
+        (tx_count as f64 / span_hours, span_hours)
+    } else {
+        (0.0, 0.0)
+    };
+
+    Ok(ProgramActivity {
+        tx_count,
+        tx_per_hour,
+        time_span_hours,
+    })
 }
 
 async fn rpc_call<T: serde::de::DeserializeOwned>(
