@@ -49,6 +49,25 @@ enum Command {
         #[arg(short, long, default_value = "config.toml")]
         config: PathBuf,
     },
+
+    /// Render a report from pre-computed analysis files (no LLM calls)
+    Render {
+        /// Path to signals JSON file
+        #[arg(long)]
+        signals: PathBuf,
+
+        /// Path to narratives JSON file
+        #[arg(long)]
+        narratives: PathBuf,
+
+        /// Path to build ideas JSON file
+        #[arg(long)]
+        ideas: PathBuf,
+
+        /// Output path for the HTML report
+        #[arg(short, long, default_value = "report.html")]
+        output: PathBuf,
+    },
 }
 
 #[tokio::main]
@@ -73,6 +92,12 @@ async fn main() -> Result<()> {
             model,
         } => run(config, output, provider, model).await,
         Command::Signals { config } => signals_only(config).await,
+        Command::Render {
+            signals,
+            narratives,
+            ideas,
+            output,
+        } => render_from_files(signals, narratives, ideas, output),
     }
 }
 
@@ -187,6 +212,33 @@ async fn run(
     println!("  {} narratives identified", narratives.len());
     println!("  {} build ideas generated", build_ideas.len());
 
+    Ok(())
+}
+
+fn render_from_files(
+    signals_path: PathBuf,
+    narratives_path: PathBuf,
+    ideas_path: PathBuf,
+    output_path: PathBuf,
+) -> Result<()> {
+    let signals: Vec<types::Signal> =
+        serde_json::from_str(&std::fs::read_to_string(&signals_path)?)?;
+    let narratives: Vec<types::Narrative> =
+        serde_json::from_str(&std::fs::read_to_string(&narratives_path)?)?;
+    let build_ideas: Vec<types::BuildIdea> =
+        serde_json::from_str(&std::fs::read_to_string(&ideas_path)?)?;
+
+    let html = output::report::render(&signals, &narratives, &build_ideas)?;
+    output::report::write_report(&output_path, &html)?;
+
+    info!(path = %output_path.display(), "report rendered from analysis files");
+    println!(
+        "Report rendered: {} ({} signals, {} narratives, {} ideas)",
+        output_path.display(),
+        signals.len(),
+        narratives.len(),
+        build_ideas.len()
+    );
     Ok(())
 }
 
