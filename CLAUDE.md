@@ -32,7 +32,7 @@ HELIUS_API_KEY=        # (optional) Helius RPC
 SOLANA_RPC_URL=        # Solana RPC endpoint (default: public mainnet)
 ```
 
-Shared .env at `~/Documents/.env` — loaded automatically.
+Shared .env at `~/Documents/superteam/.env` — loaded automatically.
 
 ## Architecture
 
@@ -43,6 +43,7 @@ CLI (clap) → Sources (parallel) → Aggregator → Claude Synthesis → HTML R
 ### Sources
 - `sources/github.rs` — GitHub Search API: new Solana repos, star velocity, trending
 - `sources/solana_rpc.rs` — Helius/Solana RPC: TPS, epoch info, program activity
+- `sources/defi_llama.rs` — DeFiLlama API: TVL, protocol metrics, chain activity
 - `sources/social.rs` — Blog scraping: article extraction, Solana relevance filtering
 
 ### Analysis
@@ -69,8 +70,7 @@ CLI (clap) → Sources (parallel) → Aggregator → Claude Synthesis → HTML R
 ## Sprint Context
 
 Part of SuperTeam bounty sprint (Feb 11-15, 2026).
-Durable state: `~/.claude/projects/-home-suds-Documents/memory/superteam-sprint.md`
-Master plan: `~/.claude/plans/eager-sleeping-minsky.md`
+Durable state: `~/.claude/projects/-home-suds-Documents-superteam/memory/superteam-sprint.md`
 
 ## Doc-to-Code Mapping
 
