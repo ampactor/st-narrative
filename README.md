@@ -2,6 +2,8 @@
 
 SolScout is a refreshable intelligence tool that detects emerging narratives in the Solana ecosystem by cross-validating signals from four independent data sources, then synthesizing them into actionable build ideas via LLM analysis.
 
+Narrative signals from SolScout power autonomous security scanning in [SolGuard](../st-solguard/), enabling narrative-informed vulnerability targeting.
+
 **[Live Report](https://ampactor.github.io/st-narrative/)** — auto-refreshed on the 1st and 15th of each month.
 
 ## Signal Sources
