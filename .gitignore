@@ -2,3 +2,5 @@
 .env
 ../.env
 *.db
+CLAUDE.md
+THINK_TANK_SYNTHESIS.md
