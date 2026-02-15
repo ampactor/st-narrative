@@ -67,6 +67,8 @@ The full report contains 25 build ideas across 8 detected narratives, each with 
 
 ## Running Locally
 
+> **Quick demo (no API key needed):** `cargo run -- signals -c config.toml` runs signal detection using only on-chain data — no LLM required. Fastest way to see the tool work.
+
 ```bash
 # Required environment variables
 export GITHUB_TOKEN=...
