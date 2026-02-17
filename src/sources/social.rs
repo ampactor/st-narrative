@@ -81,15 +81,15 @@ async fn scrape_source(http: &HttpClient, name: &str, url: &str) -> Result<Vec<S
         return Ok(Vec::new());
     }
 
-    let relevant = if solana_articles.is_empty() {
-        &articles
+    let titles: Vec<String> = if solana_articles.is_empty() {
+        articles.iter().take(10).map(|(t, _)| t.clone()).collect()
     } else {
-        // Use solana_articles but we need owned references
-        // Just use all articles and note the Solana-relevant count
-        &articles
+        solana_articles
+            .iter()
+            .take(10)
+            .map(|(t, _)| t.clone())
+            .collect()
     };
-
-    let titles: Vec<String> = relevant.iter().take(10).map(|(t, _)| t.clone()).collect();
 
     Ok(vec![Signal {
         source: SignalSource::Social,

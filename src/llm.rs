@@ -124,6 +124,9 @@ impl LlmClient {
     ) -> Result<Self> {
         let env_var = api_key_env.unwrap_or_else(|| provider.default_api_key_env().into());
         let api_key = std::env::var(&env_var).unwrap_or_default();
+        if api_key.is_empty() {
+            return Err(Error::config(format!("LLM API key not set: ${env_var}")));
+        }
         Self::new(provider, api_key, model, max_tokens, base_url)
     }
 

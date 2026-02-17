@@ -84,7 +84,15 @@ impl HttpClient {
             }
 
             match build().send().await {
-                Ok(resp) => return self.handle_response(resp).await,
+                Ok(resp) => match self.handle_response(resp).await {
+                    Ok(body) => return Ok(body),
+                    Err(e) if e.is_retryable() => {
+                        warn!(attempt, error = %e, "retryable error, will retry");
+                        last_error = e;
+                        continue;
+                    }
+                    Err(e) => return Err(e),
+                },
                 Err(e) => {
                     last_error = Error::http(e.to_string());
                     if e.is_timeout() || e.is_connect() {

@@ -12,13 +12,25 @@ pub struct SignalGroup {
     pub key_metrics: Vec<Metric>,
 }
 
+fn normalize_category(cat: &str) -> String {
+    match cat.to_lowercase().as_str() {
+        "defi" | "decentralized finance" => "DeFi".into(),
+        "nft" | "nfts" | "non-fungible token" | "non-fungible tokens" => "NFT".into(),
+        "depin" | "decentralized physical infrastructure" => "DePIN".into(),
+        "gaming" | "gamefi" | "game fi" => "Gaming".into(),
+        "rwa" | "real world assets" | "real-world assets" => "RWA".into(),
+        "dao" | "daos" | "decentralized autonomous organization" => "DAO".into(),
+        _ => cat.to_string(),
+    }
+}
+
 /// Aggregate signals by category, compute cross-source validation.
 pub fn aggregate(signals: &[Signal]) -> Vec<SignalGroup> {
     let mut by_category: HashMap<String, Vec<usize>> = HashMap::new();
 
     for (i, signal) in signals.iter().enumerate() {
         by_category
-            .entry(signal.category.clone())
+            .entry(normalize_category(&signal.category))
             .or_default()
             .push(i);
     }
