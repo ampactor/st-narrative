@@ -54,6 +54,29 @@
 
     <main class="max-w-6xl mx-auto px-6 py-8 space-y-12">
 
+        <!-- Executive Summary -->
+        <section class="bg-gray-900 rounded-lg p-6 border border-gray-800">
+            <h2 class="text-xl font-bold mb-4 text-gray-200">Executive Summary</h2>
+            <p class="text-gray-400 mb-4">
+                SolScout detected <strong class="text-gray-200">{{ narratives.len() }}</strong> emerging narratives
+                from <strong class="text-gray-200">{{ total_signals }}</strong> signals across
+                <strong class="text-gray-200">{{ source_count }}</strong> data sources.
+                {% if narratives.len() > 0 %}
+                Top narrative by confidence: <strong class="text-solana-green">{{ narratives[0].title }}</strong>
+                ({{ narratives[0].confidence_pct }}% confidence).
+                {% endif %}
+            </p>
+            <div class="border-t border-gray-800 pt-4">
+                <h3 class="text-sm font-semibold text-gray-400 mb-2">Methodology</h3>
+                <p class="text-sm text-gray-500">
+                    Signals are gathered from GitHub (repository activity, star velocity), Solana RPC (TPS, epoch data,
+                    program activity), DeFiLlama (TVL, protocol metrics), and ecosystem blogs (article scraping).
+                    Raw signals are grouped by category and passed to an LLM for narrative synthesis.
+                    Confidence scores reflect multi-source corroboration and signal strength.
+                </p>
+            </div>
+        </section>
+
         <!-- Stats Strip -->
         <div class="grid grid-cols-3 gap-4">
             <div class="bg-gray-900 rounded-lg p-4 border border-gray-800">
@@ -89,6 +112,7 @@
                         <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded text-xs">{{ m }}</span>
                         {% endfor %}
                         <span class="bg-gray-800 text-gray-500 px-2 py-1 rounded text-xs">{{ n.signal_count }} supporting signals</span>
+                        <span class="bg-gray-800 text-gray-500 px-2 py-1 rounded text-xs">{{ n.source_diversity }}/{{ n.total_sources }} sources</span>
                     </div>
                 </div>
                 {% endfor %}

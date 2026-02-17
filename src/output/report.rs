@@ -23,6 +23,8 @@ pub struct NarrativeView {
     pub trend_class: String,
     pub signal_count: usize,
     pub metrics: Vec<String>,
+    pub source_diversity: usize,
+    pub total_sources: usize,
 }
 
 pub struct BuildIdeaView {
@@ -51,19 +53,32 @@ pub fn render(
     build_ideas: &[BuildIdea],
 ) -> Result<String> {
     let sources: std::collections::HashSet<_> = signals.iter().map(|s| s.source).collect();
+    let total_sources = sources.len();
 
-    let narrative_views: Vec<NarrativeView> = narratives
+    let mut narrative_views: Vec<NarrativeView> = narratives
         .iter()
-        .map(|n| NarrativeView {
-            title: n.title.clone(),
-            summary: n.summary.clone(),
-            confidence_pct: (n.confidence * 100.0) as u32,
-            trend: n.trend.to_string(),
-            trend_class: n.trend.css_class().to_string(),
-            signal_count: n.supporting_signals.len(),
-            metrics: n.key_metrics.iter().map(|m| m.to_string()).collect(),
+        .map(|n| {
+            let source_diversity = n
+                .supporting_signals
+                .iter()
+                .filter_map(|&idx| signals.get(idx))
+                .map(|s| s.source)
+                .collect::<std::collections::HashSet<_>>()
+                .len();
+            NarrativeView {
+                title: n.title.clone(),
+                summary: n.summary.clone(),
+                confidence_pct: (n.confidence * 100.0) as u32,
+                trend: n.trend.to_string(),
+                trend_class: n.trend.css_class().to_string(),
+                signal_count: n.supporting_signals.len(),
+                metrics: n.key_metrics.iter().map(|m| m.to_string()).collect(),
+                source_diversity,
+                total_sources,
+            }
         })
         .collect();
+    narrative_views.sort_by(|a, b| b.confidence_pct.cmp(&a.confidence_pct));
 
     let idea_views: Vec<BuildIdeaView> = build_ideas
         .iter()

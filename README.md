@@ -21,7 +21,7 @@ SolScout collects signals in parallel from four sources. Each provides a differe
 
 1. **Parallel collection** — All four sources run concurrently via Tokio tasks. Each produces typed `Signal` structs with source attribution, category, metrics, and optional URLs.
 
-2. **Aggregation** — Signals are grouped by category (DeFi, Infrastructure, AI, etc.) and scored for source diversity. A narrative backed by GitHub activity + on-chain data + blog coverage is stronger than one from a single source.
+2. **Aggregation** — Signals are grouped by normalized category (e.g. "defi"/"Decentralized Finance" → "DeFi") and scored for source diversity. A narrative backed by GitHub activity + on-chain data + blog coverage is stronger than one from a single source.
 
 3. **Cross-validation** — The aggregator computes derived metrics (tx/hr rates, ratios between programs, star velocity) that reveal patterns invisible in raw counts.
 
@@ -47,7 +47,7 @@ Every narrative in the report is traceable back to specific signals. Here is a c
 >
 > **Why 88% confidence:** Three source types corroborate — on-chain tx rates show Jupiter dominance quantitatively, GitHub shows DeFi tooling building around Jupiter's flow, and the 8.5x ratio is a derived cross-validation metric. Blog posts from Helius discuss Jupiter integration patterns.
 
-The report includes a full raw signals table so readers can verify any narrative's claims against the underlying data.
+The report includes an executive summary with methodology notes, per-narrative source diversity badges (e.g. "3/4 sources"), and a full raw signals table so readers can verify any narrative's claims against the underlying data.
 
 ## Example Build Ideas
 
